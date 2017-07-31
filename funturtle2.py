@@ -5,12 +5,13 @@ LEFT_ARROW = "Left"
 DOWN_ARROW = "Down"
 RIGHT_ARROW = "Right"
 SPACEBAR = "space"
+K_KEY = "k"
+P_KEY = "p"
 
 UP = 0
 LEFT = 1
 DOWN = 2
 RIGHT = 3
-
 direction = UP
 
 
@@ -47,9 +48,21 @@ def right():
     x = old_pos[0]
     y = old_pos[1]
     turtle.goto(x+10,y)
-
+def pen_up():
+    global direction
+    direction = K_KEY
+    print('Pen Up')
+    turtle.penup()
+def pen_down():
+    global direction
+    direction = P_KEY
+    print('Pen Down')
+    turtle.pendown()
 turtle.onkeypress(up, UP_ARROW)
 turtle.onkeypress(down, DOWN_ARROW)
 turtle.onkeypress(left, LEFT_ARROW)
 turtle.onkeypress(right, RIGHT_ARROW)
+turtle.onkeypress(turtle.stamp, SPACEBAR)
+turtle.onkeypress(pen_up, K_KEY)
+turtle.onkeypress(pen_down, P_KEY)
 turtle.listen()
